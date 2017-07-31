@@ -23,8 +23,7 @@
     });
 
     app.controller('myCtrl', function($scope) {
-    $scope.firstName= "John";
-    $scope.lastName= "Doe";
+    
     $scope.listaCarrito = [];
 
     $scope.agregar = function(item)
@@ -52,20 +51,24 @@ $.ajax({
  
     // The data to send (will be converted to a query string)
     data: {
-        id: $scope.listaCarrito
+        'listaCarrito': $scope.listaCarrito
 
-    },
- 
+    }, 
     // Whether this is a POST or GET request
-    type: "GET",
+    type: "POST",
  
     // The type of data we expect back
     dataType : "json",
+     headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
 })
   // Code to run if the request succeeds (is done);
   // The response is passed to the function
   .done(function( json ) {
     console.log(json);
+        alert( "Agregado al carrito" );
+
   })
   // Code to run if the request fails; the raw request and
   // status codes are passed to the function
@@ -181,7 +184,7 @@ $.ajax({
                 </div>
                 <div class="col-md-2 infor-left"> 
                     <h4>Contactanos</h4>
-                    <h6>Telefono: +1 171 4745</h6>
+                    <h6>Telefono: +14545745</h6>
                     <p>Email: <a href="mailto:example@email.com">testsantillan@gmail.com</a></p>
 
                 </div>

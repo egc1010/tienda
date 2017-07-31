@@ -54,7 +54,7 @@ class AdminController extends Controller
     }
 
  public function consultarArticulo(){
-        $articulo = DB::table('articulos')->paginate(8);
+        $articulo = DB::table('articulos')->paginate(10);
         return view('consultarArticulo', compact('articulo'));
     }
 

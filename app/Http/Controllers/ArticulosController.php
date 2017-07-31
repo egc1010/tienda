@@ -25,10 +25,27 @@ class ArticulosController extends Controller
         return view('productos', compact('articulo'));
     }
 
-public function vuelta($id){
+public function vuelta()
+{
+
+    $lista =  $_POST['listaCarrito'];
+
+//$sqlData = array();
 
 
-  return response()->json(['id' => id]);
+
+
+/* $lista=DB::table('compras')
+//DB::table('compras')->insert($sqlData);
+ $lista->id=$datos->input('total');
+         $lista->save();
+*/
+
+  return response()->json([
+    'lista' => $lista
+    ]);
+
+
 }
 
  public function consultar(Request $datos){
@@ -56,7 +73,7 @@ public function enviarPromociones(Request $datos){
 for ($i=0; $i < count($CorreoBienvenido); $i++) {  
   
 Mail::send('admin.correoPromociones', ['CorreoBienvenido' => $CorreoBienvenido[$i]] ,function($message) use ($CorreoBienvenido,$i) {
-        $message->from('testsantillan@gmail.com','Luxury watches');
+        $message->from('testsantillan@gmail.com','TecShop');
         $message->to($CorreoBienvenido[$i])->subject('Tenemos nuevas ofertas para ti');
   });
 

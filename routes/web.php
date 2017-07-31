@@ -30,7 +30,9 @@ route::get('/productos', function() {
 
 });
 
+route::post('/vuelta','ArticulosController@vuelta');
 route::get('/vuelta','ArticulosController@vuelta');
+
 route::get('/productos','ArticulosController@consultarProductos');
 
 Route::get('/mostrarArticulo', 'ArticulosController@mostrarArticulo'); 
